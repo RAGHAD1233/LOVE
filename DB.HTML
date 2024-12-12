@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>دبدوب وردي</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #ffe6f2; /* خلفية وردية */
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    .container {
+      position: relative;
+    }
+
+    .teddy {
+      position: relative;
+      width: 200px;
+      height: 250px;
+      background-color: pink;
+      border-radius: 50%;
+      margin: 0 auto;
+    }
+
+    /* الأذنان */
+    .teddy::before,
+    .teddy::after {
+      content: '';
+      position: absolute;
+      width: 70px;
+      height: 70px;
+      background-color: pink;
+      border-radius: 50%;
+      top: -40px;
+    }
+
+    .teddy::before {
+      left: -30px;
+    }
+
+    .teddy::after {
+      right: -30px;
+    }
+
+    /* العيون */
+    .eye {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: black;
+      border-radius: 50%;
+      top: 80px;
+    }
+
+    .eye.left {
+      left: 50px;
+    }
+
+    .eye.right {
+      right: 50px;
+    }
+
+    /* الأنف */
+    .nose {
+      position: absolute;
+      top: 120px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 30px;
+      height: 20px;
+      background-color: black;
+      border-radius: 50%;
+    }
+
+    /* الفم */
+    .mouth {
+      position: absolute;
+      top: 150px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 30px;
+      border: 2px solid black;
+      border-radius: 50%;
+      border-top: none;
+    }
+
+    .buttons {
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 18px;
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #ff3385;
+    }
+
+    .crying {
+      display: none;
+      color: blue;
+      font-size: 20px;
+      margin-top: 10px;
+    }
+
+    .kiss {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 50px;
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="teddy">
+      <div class="eye left"></div>
+      <div class="eye right"></div>
+      <div class="nose"></div>
+      <div class="mouth"></div>
+    </div>
+    <h2>رغد، هل تحبين سلومتك؟</h2>
+    <div class="buttons">
+      <button onclick="handleYes()">نعم</button>
+      <button onclick="handleNo()">لا</button>
+    </div>
+    <p class="crying" id="crying">الدبدوب يبكي! 😭</p>
+    <div class="kiss" id="kiss">💋💋💋</div>
+  </div>
+
+  <script>
+    function handleNo() {
+      const crying = document.getElementById('crying');
+      const kiss = document.getElementById('kiss');
+      crying.style.display = 'block';
+      kiss.style.display = 'none';
+    }
+
+    function handleYes() {
+      const crying = document.getElementById('crying');
+      const kiss = document.getElementById('kiss');
+      crying.style.display = 'none';
+      kiss.style.display = 'block';
+      setTimeout(() => {
+        kiss.style.display = 'none';
+      }, 2000); // تختفي البوسة بعد 2 ثانية
+    }
+  </script>
+</body>
+</html>
